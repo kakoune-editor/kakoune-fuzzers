@@ -5,6 +5,19 @@ This repository contains some fuzzers based on
 [libFuzzer](https://www.llvm.org/docs/LibFuzzer.html) for the
 [Kakoune](https://github.com/mawww/kakoune) code editor.
 
+Dependencies
+------------
+
+The code should be compiled with `clang++`, under a version that has
+`libFuzzer` available without any extra installation necessary. According to
+the [documentation](https://www.llvm.org/docs/LibFuzzer.html#fuzzer-usage),
+that would be version 6.0 and up.
+
+The version of Clang used should also be supported by
+upstream Kakoune. Make sure to check the project's
+[build requirements](https://github.com/mawww/kakoune#building) for further
+details.
+
 Setup
 -----
 
