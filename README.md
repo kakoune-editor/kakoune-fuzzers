@@ -57,3 +57,12 @@ Once you've decided which flag you're going to use to run the fuzzer,
 run it, and wait for results. For example:
 
 	$ ./fuzzer -only_ascii=1 -detect_leaks=0
+
+Some fuzzers come with a corpus populated with relevant data (for example,
+regular expressions used at runtime by the editor), feel free to use them
+by passing their path to the program:
+
+	$ ./fuzzer [options] /path/to/corpus
+
+Using a corpus, whether it is provided by this repository or written by
+yourself, is highly recommended to make fuzzing more effective.
