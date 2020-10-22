@@ -19,18 +19,18 @@ CFLAGS ?= \
     -pedantic -std=c++17 -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-address -frelaxed-template-template-args
 LDFLAGS ?= -fsanitize=fuzzer,address
 
-all: kakfuzz-for_each_diff_lorem_sentence
+all: kakfuzz-for_each_diff
 
 clean:
-	rm -f $(OBJECTS) for_each_diff_lorem_sentence.o
+	rm -f $(OBJECTS) for_each_diff.o
 
 distclean: clean
-	rm -f kakfuzz-for_each_diff_lorem_sentence
+	rm -f kakfuzz-for_each_diff
 
 %.o: %.cc
 	$(CXX) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-kakfuzz-for_each_diff_lorem_sentence: $(OBJECTS) for_each_diff_lorem_sentence.o
+kakfuzz-for_each_diff: $(OBJECTS) for_each_diff.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 
 .PHONY: all clean distclean
