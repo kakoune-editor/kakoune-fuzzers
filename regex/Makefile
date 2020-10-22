@@ -21,21 +21,21 @@ CFLAGS ?= \
     -pedantic -std=c++17 -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-address -frelaxed-template-template-args
 LDFLAGS ?= -fsanitize=fuzzer,address
 
-all: kakfuzz-regex_match_self kakfuzz-regex_search_self
+all: kakfuzz-regex_match kakfuzz-regex_search
 
 clean:
-	rm -f $(OBJECTS) match_self.o search_self.o
+	rm -f $(OBJECTS) match.o search.o
 
 distclean: clean
-	rm -f kakfuzz-regex_match_self kakfuzz-regex_search_self
+	rm -f kakfuzz-regex_match kakfuzz-regex_search
 
 %.o: %.cc
 	$(CXX) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-kakfuzz-regex_match_self: $(OBJECTS) match_self.o
+kakfuzz-regex_match: $(OBJECTS) match.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 
-kakfuzz-regex_search_self: $(OBJECTS) search_self.o
+kakfuzz-regex_search: $(OBJECTS) search.o
 	$(CXX) $(LDFLAGS) -o $@ $^
 
 .PHONY: all clean distclean
