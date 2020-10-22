@@ -8,7 +8,7 @@ ifeq ($(KAKOUNE),)
 $(error Please pass the KAKOUNE variable, which must point to the project directory)
 endif
 
-FUZZERS ?= regex json
+FUZZERS ?= regex json diff
 
 all:
 	@for dir in $(FUZZERS); do make -C "$${dir}" KAKOUNE="$(KAKOUNE)" all; done
