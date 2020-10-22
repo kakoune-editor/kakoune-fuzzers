@@ -66,3 +66,10 @@ by passing their path to the program:
 
 Using a corpus, whether it is provided by this repository or written by
 yourself, is highly recommended to make fuzzing more effective.
+
+If you want to run several fuzzers that rely on the same initial corpus,
+create a new corpus directory and perform a merge:
+
+	$ mkdir corpus_fuzzer
+	$ ./fuzzer -merge=1 corpus_fuzzer corpus
+	$ ./fuzzer [options] corpus_fuzzer
