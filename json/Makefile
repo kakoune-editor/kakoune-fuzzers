@@ -16,7 +16,7 @@ OBJECTS = $(SRC:.cc=.o)
 
 CXX := clang++
 INCLUDE ?= -I$(KAKOUNE)/src
-CFLAGS ?= \
+CXXFLAGS ?= \
     -g -O1 -fsanitize=fuzzer-no-link,address \
     -pedantic -std=c++17 -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-address -frelaxed-template-template-args
 LDFLAGS ?= -fsanitize=fuzzer,address
@@ -30,7 +30,7 @@ distclean: clean
 	rm -f kakfuzz-json_parse
 
 %.o: %.cc
-	$(CXX) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 kakfuzz-json_parse: $(OBJECTS) json_parse.o
 	$(CXX) $(LDFLAGS) -o $@ $^
